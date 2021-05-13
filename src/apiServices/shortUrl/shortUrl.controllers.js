@@ -19,7 +19,7 @@ const shortUrl = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    res.json({ original_url : req.body.url, short_url : number});
+    res.json({ original_url : req.body.url});
 };
 
 const redirectUrl = async (req, res) => {

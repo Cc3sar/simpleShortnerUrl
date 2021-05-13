@@ -1,5 +1,9 @@
+const dns = require('dns');
+const url = require('url');
+
+
 const verifyUrl = (req, res, next) => {
-    const checkUrl = req.body.url.split(".");
+    /* const checkUrl = req.body.url.split(".");
 
     console.log(checkUrl);
     
@@ -7,7 +11,18 @@ const verifyUrl = (req, res, next) => {
         return res.json({ error: 'invalid url' })
     };
 
-    next();
+    next(); */
+    
+    const bodyUrl = req.body.url;
+
+    const somethingUrl = dns.lookup(url.parse(bodyUrl).hostname,
+    (error, address) => {
+        if(!address) {
+            return res.json({ error: "invalid url" });
+        } else {
+            next();
+        }
+    })
 };
 
 export default verifyUrl;
