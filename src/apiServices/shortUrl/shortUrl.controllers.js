@@ -24,7 +24,7 @@ const shortUrl = async (req, res) => {
 
 const redirectUrl = async (req, res) => {
     try {
-        const findUrl = await Url.findOne({ shortName: { $in: req.params.redirect } });
+        const findUrl = await Url.findOne({ shortName: { $in: req.params.short_url } });
         if(!findUrl) return res.json({ error: "invalid url" });   
 
         res.redirect(findUrl.name);

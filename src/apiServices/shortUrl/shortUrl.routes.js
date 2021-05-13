@@ -8,6 +8,6 @@ router.get('/', shortUrlControllers.home)
 
 router.post('/shorturl', verifyUrl, shortUrlControllers.shortUrl);
 
-router.get('/shorturl/:redirect', shortUrlControllers.redirectUrl);
+router.get('/shorturl/:short_url', shortUrlControllers.redirectUrl);
 
 export default router;
